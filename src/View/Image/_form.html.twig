@@ -1,0 +1,13 @@
+{# TODO : manage errors display #}
+
+<form method="post">
+	<input type="hidden" value="{{ image.image_id }}" name="id">
+	{% for error in errors %}
+    <p>{{ error }}</p>
+    {% endfor %}
+	<label for="url">Image URL</label>
+	<input type="text" value="{{ image.url }}" name="url" id="url">
+	<label for="trainings">Training ID</label>
+	<input type="text" value="{{ image.training_id }}" name="training_id" id="training_id">
+	<button>Submit</button>
+</form>

@@ -1,0 +1,11 @@
+{# TODO : manage errors display #}
+
+<form method="post">
+	<input type="hidden" value="{{ stack.id }}" name="id">
+	{% for error in errors %}
+    <p>{{ error }}</p>
+    {% endfor %}
+	<label for="name">Stack Name</label>
+	<input type="text" value="{{ stack.name }}" name="name" id="name">
+	<button>Submit</button>
+</form>

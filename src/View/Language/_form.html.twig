@@ -1,0 +1,13 @@
+<form method="post">
+{% for error in errors %}
+    <p> {{ error }} </p>
+    {% endfor %}
+    <div>
+        <input type="hidden" value="{{ language.id }}" name="id">
+    </div>
+    <div>
+	    <label for="name">Language name : </label>
+	<input type="text" value="{{ language.name }}" name="name" id="name">
+    </div>
+	<button>Submit</button>
+</form>

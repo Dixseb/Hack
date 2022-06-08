@@ -1,0 +1,76 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Facture de {{ invoice.firstname }} {{ invoice.lastname }}</h1>
+    <p>Facture n° {{ invoice.id }} | Date : {{ invoice.created_at|date('j F Y')|format_datetime('long', 'none',locale='fr') }} | Montant : {{ invoice.total }} €</p>
+    <a href="/invoices/edit?id={{ invoice.id }}">Editer la facture</a>
+    <form action="/invoices/delete" method="POST">
+        <input type="hidden" name="id" value="{{ invoice.id }}">
+        <button>Supprimer la facture</button>
+    </form>
+    <a href="/invoices">Retour</a>
+
+<div class="container mt-5 mb-3">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-8">
+            <div class="card bg-light">
+                <div class="d-flex flex-row p-2"> <img src="/assets/images/Logohackademy.svg"  class="bg-dark me-5" width="78">                        
+                <div class="d-flex flex-column"> <span class="font-weight-bold">Invoice n°{{ invoice.id }}</span></div>
+                </div>
+                <hr>
+                <div class="table-responsive p-2">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr class="content">
+                                <td class="font-weight-bold">Hackademy<br>TEL : 0101010101 <br>Email : contact@hackademy.com<br>France</td>
+                                <td class="font-weight-bold text-right">{{ invoice.firstname }} {{ invoice.lastname }}<br>TEL : 0606060606<br>Email : {{ user.email }}<br>Adresse : {{user.address}}  </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                  <p><b>Date :</b> {{ invoice.created_at|date('j F Y')|format_datetime('long', 'none',locale='fr') }}</p>
+                </div>
+                <hr>
+                <div class="products p-2">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr class="add bg-warning">
+                                <td>Description</td>
+                                <td></td>
+                                <td></td>
+                                <td class="text-center">Total</td>
+                            </tr>
+                            {% set totalPrice = 0 %}
+                            {% for training in trainings %}
+                            <tr class="content bg-secondary">
+                                <td>{{training.title}}</td>
+                                <td></td>
+                                <td></td>
+                                <td class="text-center">{{training.price }} €</td>
+                            </tr>
+                            {% set totalPrice = totalPrice + training.price  %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <hr>
+                <div class="products p-2">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr class="add">
+                                <td></td>
+                                <td class="text-center">Thank you for your business</td>
+                                <td class="text-center">Total</td>
+                            </tr>
+                            <tr class="content">
+                                <td></td>
+                                <td class="text-center"><img src="/assets/images/signature3.png" width="128"> </td>
+                                <td class="text-center">{{ totalPrice }} €</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

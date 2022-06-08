@@ -1,0 +1,17 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Thank you!
+{% endblock %}
+
+{% block content %}
+    <div class="main-text-color">
+    <h1>Facture de {{ user.lastname }} {{ user.firstname }}</h1>
+    <p>Facture n° {{ invoice.id }} | Date : {{ invoice.created_at|date('j F Y')|format_datetime('long', 'none',locale='fr') }} | Montant : {{ invoice.total }} €</p>
+    <a href="/invoices/edit?id={{ invoice.id }}">Editer la facture</a>
+    <form action="/invoices/delete" method="POST">
+        <input type="hidden" name="id" value="{{ invoice.id }}">
+        <button>Supprimer la facture</button>
+    </form>
+    <a href="/invoices">Gérer les factures</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <p>{{ dump(POST) }}</p>
+
+    <h1>Stack {{ stack.name }}</h1>
+    <p>{{ stack.id }}. {{ stack.name }}</p>
+    <a href="/stacks/edit?id={{ stack.id }}">Edit</a>
+    <form action="/stacks/delete" method="POST">
+        <input type="hidden" name="id" value="{{ stack.id }}">
+        <button>Delete</button>
+    </form>
+    <a href="/stacks">Back</a>
+{% endblock %}

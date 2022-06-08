@@ -1,0 +1,11 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Formation {{ wishlist.title }}</h1>
+    <p>{{ wishlist.id }}. {{ wishlist.title }}</p>
+    <form action="/wishlists/delete" method="POST">
+        <input type="hidden" name="id" value="{{ wishlist.id }}">
+        <button>Supprimer</button>
+    </form>
+    <a href="/wishlists">Retour</a>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Training</h1>
+    <ul>
+        {% for training in trainings %}
+            <li><a href="/trainings/show?id={{ training.id }}">{{ training.id }}. {{ training.title }}. {{ training.description }}. {{ training.price}}. {{ training.date_start}}. {{ training.date_end}}. {{training.max_students}}</a></li>
+        {% else %}
+            <li>Nothing to display</li>
+        {% endfor %}
+    </ul>
+    <a href="/trainings/add">Ajouter</a>
+{% endblock %}

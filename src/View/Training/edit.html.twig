@@ -1,0 +1,7 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Edit language {{ training.title }}</h1>
+    {% include 'Training/_form.html.twig' %}
+    <a href="/trainings/show?id={{ training.id }}">Back</a>
+{% endblock %}

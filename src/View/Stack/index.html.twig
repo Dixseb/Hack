@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Stacks</h1>
+    <ul>
+        {% for stack in stacks %}
+            <li><a href="/stacks/show?id={{ stack.id }}">{{ stack.id }}. {{ stack.name }}</a></li>
+        {% else %}
+            <li>Nothing to display</li>
+        {% endfor %}
+    </ul>
+    <a href="/stacks/add">Ajouter</a>
+{% endblock %}

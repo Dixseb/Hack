@@ -1,0 +1,7 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Edit stack {{ stack.name }}</h1>
+    {% include 'Stack/_form.html.twig' %}
+    <a href="/stacks/show?id={{ stack.id }}">Back</a>
+{% endblock %}

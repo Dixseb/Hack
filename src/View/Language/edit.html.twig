@@ -1,0 +1,7 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Edit language {{ language.name }}</h1>
+    {% include 'Language/_form.html.twig' %}
+    <a href="/languages/show?id={{ language.id }}">Back</a>
+{% endblock %}

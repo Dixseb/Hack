@@ -1,0 +1,12 @@
+{% for error in errors %}
+    <p>{{error}}</p>
+{% endfor %}
+
+<form method="post">
+	<input type="hidden" value="{{ invoice.id }}" name="id">
+	<label for="userid">ID de l'étudiant</label>
+	<input type="text" value="{{ invoice.user_id }}" name="userid" id="userid">
+	<label for="total">Total de la facture (en euro)</label>
+	<input type="text" value="{{ invoice.total }}" name="total" id="total"> €
+	<button>Créer la facture</button>
+</form>

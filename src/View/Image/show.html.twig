@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Image {{ image.url }}</h1>
+    <p>{{ image.image_id }}. {{ image.url }} | training ID : {{ image.training_id }}</p>
+    <img src="{{ image.url }}" alt="an image to link with one more trainings"></br>
+    <a href="/images/edit?id={{ image.image_id }}">Edit</a>
+    <form action="/images/delete" method="POST">
+        <input type="hidden" name="id" value="{{ image.image_id }}">
+        <button>Delete</button>
+    </form>
+    <a href="/images">Back</a>
+{% endblock %}

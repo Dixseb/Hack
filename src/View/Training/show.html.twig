@@ -1,0 +1,64 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ training.title }}{% endblock %}
+
+{% block content %}
+    <div class="container-fluid pd-5" id="container-show">
+        <div class="row d-flex flex-row-reverse" id="back-one">
+            <div class="col-lg-7 col-md-5 col-xs-12 container-fluid ms-1 ms-1" id="col-titre">
+                <div class="col-text">
+                    <h1 class="row-title text-center">{{ training.title }}</h1>
+                    <div class="row-bar mt-4 mb-4 mx-auto"></div>
+                    <p class="row-minitext text-justify">
+                        {{ training.description }}
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-xs-12 container-fluid mt-5 mb-5 bg-light" id="col-desc" >
+                <div class="row m-3 mb-2" id="training_details">
+                    <div class="col text-center counter-section"> 
+                        <img src="/assets/images/alarm-fill.svg">
+                        <span class="timer counter">{{ training.duration }}</span>
+                        <p class="counter-title">Heures</p>
+                    </div> 
+                    <div class="col text-center counter-section"> 
+                        <img src="/assets/images/person-check-fill.svg"> 
+                        <span class="timer counter">{{ training.participants }} / {{ training.max_students }}</span>
+                        <span class="counter-title">Elèves</span> 
+                    </div> 
+                    <div class="col text-center counter-section">                
+                        <img src="/assets/images/hand-thumbs-up-fill.svg"> 
+                        <span class="timer counter">810</span> 
+                        <span class="counter-title">Like</span> 
+                    </div> 
+                </div>
+                <p class="text-center">
+                    <img class="icon me-2" src="/assets/images/calendar3.svg">{{ training.date_start|date('j F Y')|format_datetime('long', 'none',locale='fr') }} au {{ training.date_end|date('j F Y')|format_datetime('long', 'none',locale='fr') }}
+                </p>
+                <hr />
+                <div class="title font-weight-bold m-3 text-uppercase text-center">Ce que vous apprendrez</div>
+                <div class="row-txt ms-2 mt-1 mb-1">
+                    <ul>
+                        <li>Utiliser toutes les nouveautés de PHP</li>
+                        <li>sécuriser vos données</li>
+                        <li>Utiliser les sessions / cookies</li>
+                    </ul>
+                </div>
+                <hr />
+                <div class="row-tagbox  ms-2 mt-1">
+                    <span class="col-tag">Back End</span>
+                    <span class="col-tag">PHP</span>
+                    <span class="col-price ms-4 mt-5 fs-3"></span>
+                </div>
+                    <div class="mx-auto text-center mt-5 mb-2">
+                    {% if training.participants < training.max_students %}
+                        <a href="/cart/?add_to_cart={{training.id}}" class="btn btn-warning btn-lg"><img src="/assets/images/award-fill.svg" class="me-1">S'inscrire</a>
+                    {% else %}
+                        <p>Les inscriptions sont closes</p>
+                    {% endif %}
+                    </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

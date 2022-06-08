@@ -1,0 +1,7 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Editer la facture n° {{ invoice.id }}</h1>
+    {% include 'Invoice/_form.html.twig' %}
+    <a href="/invoices/show?id={{ invoice.id }}">Retour</a>
+{% endblock %}

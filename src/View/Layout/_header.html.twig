@@ -1,0 +1,74 @@
+<nav class="navbar navbar-light navbar-expand-md fixed-top layout-bg-color sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand d-sm-block me-3 layout-icon-color" href="/"><img class= "header" src="/assets/images/house.svg" alt=""></a>
+    <img class="logobrand d-none d-lg-block layout-icon-color"src="/assets/images/Logohackademy.svg" alt="Logo">
+    <img class="logobrand d-block d-lg-none layout-icon-color" src="/assets/images/Logomobile.svg" alt="Logo" id="Logomobile">
+    <button class="custom-toggler navbar-toggler border-hackademy" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="custom-toggler"><img class="layout-icon-color" src="/assets/images/list.svg"></span>
+    </button>
+    <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+      <div class="navbar-collapse flex-grow-0" id="navbarSupportedContent">
+        <form action="/trainings/search" class="d-flex" method="POST">
+          <input class="search-button-nav form-control d-none d-md-block d-lg-block d-xl-block me-2 border-hackademy" type="search" placeholder="Chercher formation" aria-label="Search" name="wordsearch">
+          <button class="search-button btn pt-1 pb-1 d-none d-md-block d-lg-block d-xl-block btn-hackademy btn-primary-hackademy m-1" type="submit">Chercher</button>
+        </form>
+        <ul class="list-inline mb-0 ms-4 d-none d-md-block d-lg-block d-xl-block">
+            <li class="list-inline-item" role="button" href="#login-form" data-bs-toggle="collapse" aria-expanded="false" aria-controls="login-form">
+              {% if session.user %}
+                <a href="/profile?id={{ session.user.id }}"><img class="header layout-icon-color" src="/assets/images/person-circle.svg"/></a>
+              {% else %}
+                <button class="btn-hackademy btn-primary-hackademy">
+                  Connexion
+                </button>
+              {% endif %}
+            </li>
+            <li class="list-inline-item "><img class="heart-button header layout-icon-color" src="/assets/images/heart.svg" alt="Favoris"></li>
+            <li class="list-inline-item "><a href="/cart"><img class="cart-button header layout-icon-color" src="/assets/images/panier.png" alt="panier"></a></li>
+        </ul>
+        <ul class="burger-list list-inline d-md-none position-absolute col-12 secondary-text-color layout-bg-color mt-2 pt-4 text-center display-5 start-0">
+          <form action="/trainings/search" class="d-flex justify-content-center" method="POST">
+            <input class="search-button-burger form-control d-block d-md-none me-2 border-hackademy" type="search" placeholder="Chercher une formation" aria-label="Search" name="wordsearch">
+            <button class="search-button btn pt-1 pb-1 d-block d-md-none btn-hackademy btn-primary-hackademy m-1" type="submit">Chercher</button>
+          </form>
+          <a href="/cart"><li class="mt-1">Panier</li></a>
+          <a href=""><li class="mt-1">Favoris</li></a>
+          {% if session.user %} 
+          <a href="/profile?id={{ session.user.id }}"><li class="mt-1">Profil</li></a>
+          <a href="/logout"><li class="mt-1 mb-1">Logout</li></a>
+          {% endif %}
+          {% if session.user is null %}
+          <li class="list-inline-item" role="button" href="#login-form" data-bs-toggle="collapse" aria-expanded="false" aria-controls="login-form">
+            {% if session.user %}
+              <a href="/profile?id={{ session.user.id }}"><img class="header layout-icon-color" src="/assets/images/person-circle.svg"/></a>
+            {% else %}
+              <button class="secondary-text-color layout-bg-color border-0 mb-2">
+                Login
+              </button>
+            {% endif %}
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+{% if session.user %}
+  <div class="logout-btn bg-dark position-absolute rounded-bottom text-light me-4 pt-2 pb-2 ps-3 d-none d-md-block" id="logged-user">
+    {{ session.user.firstname }} | <a href="/logout" class="unlog-btn link-primary">Déconnexion</a>
+  </div>
+{% else %}
+  {% include 'Login/_form.html.twig' %}
+{% endif %}
+{% if logoutMessage is same as(true) %}
+    <div class="alert-logout alert alert-warning alert-dismissible position-absolute fade show fw-bold mt-3 me-5" id="logout" role="alert">
+        Vous avez été déconnecté !
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endif %}
+<div class="row-tagbox text-center mx-auto mt-2 ">
+  <a href="/filter?result=backend" class="col btn btn-sm bg-light ms-1 me-1 mt-1">Back End</a>
+  <a href="/filter?result=frontend" class="col btn btn-sm bg-light ms-1 me-1 mt-1">Front End</a>
+  <a href="/filter?result=php" class="col btn btn-sm bg-light ms-1 me-1 mt-1">PHP</a>
+  <a href="/filter?result=javascript" class="col btn btn-sm bg-light ms-1 me-1 mt-1">javascript</a>
+  <a href="/filter?result=css" class="col btn btn-sm bg-light ms-1 me-1 mt-1">CSS</a>
+</div>

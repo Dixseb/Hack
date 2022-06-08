@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Liste de mes formations souhaitées</h1>
+    <ul>
+        {% for wishlist in wishlists %}
+            <li><a href="/wishlists/show?id={{ wishlist.id }}">{{ wishlist.id }}. {{ wishlist.title }}</a></li>
+        {% else %}
+            <li>Aucune formation a afficher</li>
+        {% endfor %}
+    </ul>
+    <a href="/wishlists/add">Ajouter</a>
+{% endblock %}

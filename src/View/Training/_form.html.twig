@@ -1,0 +1,70 @@
+
+<form class="main-text-color" method="post" enctype="multipart/form-data">
+
+{% for error in errors %}
+    <p> {{ error }} </p>
+    
+    {% endfor %}
+    <div>
+        <input type="hidden" value="{{ training.id }}" name="id" required>
+    </div>
+    <div>
+	    <label for="name">Training name : </label>
+	    <input type="text" value="{{ training.title }}" name="title" id="name" required max-length="255">
+    </div>
+    <div>
+	    <label for="language">Language : </label>
+	    <select id="first_language_id" name="first_language_id">
+            {% for language in languages %}
+                <option value="{{ language.id }}">{{ language.name }}</option>
+            {% endfor %}
+        </select>
+        <select id="second_language_id" name="second_language_id">
+            <option value=""> Aucun </option>
+            {% for language in languages %}
+                <option value="{{ language.id }}">{{ language.name }}</option>
+            {% endfor %}
+        </select>
+        
+    </div>
+    <div>
+	    <label for="stack">Stack : </label>
+	    <select id="stack" name="stack_id">
+            {% for stack in stacks %}
+                <option value="{{ stack.id }}">{{ stack.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+	    <label for="name">Description : </label>
+	<textarea type="text" value="" name="description" id="name" required>{{ training.description }}</textarea>
+    </div>
+    <div>
+	    <label for="name">Training price : </label>
+	<input type="text" value="{{ training.price }}" name="price" id="price" required>
+    </div>
+    <div>
+	    <label for="name">Training duration : </label>
+	<input type="text" value="{{ training.duration }}" name="duration" id="duration" required>
+    </div>
+    <div>
+	    <label for="name">Date start/End : </label>
+	<input type="text" value="{{ training.date_start }}" name="date_start" id="date_start" required>
+    <input type="text" value="{{ training.date_end }}" name="date_end" id="date_end" required>
+    </div>
+    <div>
+	    <label for="name">Nb students : </label>
+	    <input type="text" value="{{ training.max_students }}" name="max_students" id="max_students" required>
+    </div>
+    <div>
+    <input type="hidden" value="{{ image.image_id }}" name="id">
+	{% for error in errors %}
+    <p>{{ error }}</p>
+    {% endfor %}
+	<label for="trainings">Training ID</label>
+	<input type="text" value="{{ image.training_id }}" name="training_id" id="training_id">
+    <input type="file" name="url" id="imageUpload" />
+
+    </div>
+	<button>Submit</button>
+</form>

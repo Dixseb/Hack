@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Liste des factures</h1>
+    <ul>
+        {% for invoice in invoices %}
+            <li><a href="/invoices/show?id={{ invoice.id }}">Facture n° {{ invoice.id }} | Pour un montant de {{ invoice.total }} € | Etudiant : {{ invoice.firstname }} {{ invoice.lastname }}</a></li>
+        {% else %}
+            <li>Aucune facture trouvée !</li>
+        {% endfor %}
+    </ul>
+    <a href="/invoices/add">Ajouter une nouvelle facture</a>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Résultat de la recherche</h1>
+    <ul>
+        {% if errorSearch %}
+            <p>{{ errorSearch }}</p>
+        {% endif %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+  <div class="container" style="margin-top:50px;">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 py-5 "> 
+            {% for filter in filters %}
+                <div class="col">
+                    <div class="card card-custom bg-white border-white border-0">
+                        <div class="card-custom-img" style="background-image: url(https://www.vhv.rs/dpng/d/11-112994_homer-simpson-png-transparent-png.png);"></div>
+                        <div class="card-custom-avatar">
+                        <img class="img-fluid" src="https://www.webstickersmuraux.com/fr/img/asfs1085-png/folder/products-detalle-png/autocollants-homer-simpson-court-nu.png" alt="Avatar"/>
+                        </div>
+                    <div class="card-body secondary-bg-color" style="overflow-y: auto">
+                        <h4 class="card-title secondary-text-color">{{ filter.title }}</h4>
+                        <p class="card-text secondary-text-color">{{ filter.description|length > 400 ? filter.description|slice(0, 400) ~ '...' : filter.description }}</p>
+                        <p class="card-text secondary-text-color">Prix de la formation :
+                            {{ filter.price}}
+                            €</p>
+                    </div>
+                    <div class="card-footer-hackademy secondary-bg-color text-center">
+                        <a href="/trainings/show?id={{ filter.id }}" class="btn-hackademy btn-primary-hackademy">Détails</a>
+                    </div>
+                    </div>
+                </div>
+            {% endfor %}  
+        </div>
+    </div> 
+{% endblock %}
